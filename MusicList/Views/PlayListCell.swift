@@ -55,6 +55,7 @@ class PlayListCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textColor = .black
         label.font = .systemFont(ofSize: 14, weight: .semibold)
+        label.text = "short track name"
         return label
     }()
     
@@ -63,12 +64,15 @@ class PlayListCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textColor = .black
         label.font = .systemFont(ofSize: 12, weight: .regular)
+        label.text = "resume ▶️"
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        setupDefaultUI()
+        backgroundColor = .red
+//        setupPlayingUI()
     }
     
     required init?(coder: NSCoder) {
@@ -78,13 +82,12 @@ class PlayListCell: UICollectionViewCell {
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
         layoutIfNeeded()
         let size = systemLayoutSizeFitting(layoutAttributes.size)
-        let frame = CGRect(origin: layoutAttributes.frame.origin, size: CGSize(width: size.width, height: size.height))
+        let frame = CGRect(origin: layoutAttributes.frame.origin, size: CGSize(width: frame.width, height: size.height))
         layoutAttributes.frame = frame
         return layoutAttributes
     }
     
-    private func setupUI() {
-        backgroundColor = .red
+    private func setupDefaultUI() {
         contentView.addSubview(trackNameLabel)
         trackNameLabel.anchor(top: contentView.topAnchor,
                               left: contentView.leadingAnchor,
@@ -100,7 +103,6 @@ class PlayListCell: UICollectionViewCell {
         
         contentView.addSubview(artworkImageView)
         artworkImageView.setDimensions(height: 100, width: 100)
-        // top: 50, left: 10
         artworkImageView.anchor(top: trackNameLabel.bottomAnchor,
                                 left: contentView.leadingAnchor,
                                 paddingTop: 10,
@@ -111,7 +113,36 @@ class PlayListCell: UICollectionViewCell {
                                 left: artworkImageView.trailingAnchor,
                                 bottom: contentView.bottomAnchor,
                                 right: contentView.trailingAnchor,
-                                paddingLeft: 18,
-                                paddingRight: 10)
+                                paddingLeft: 18, paddingBottom: 22)
+    }
+    
+    private func setupPlayingUI() {
+        contentView.addSubview(playStatusLabel)
+        playStatusLabel.anchor(top: contentView.topAnchor,
+                                left: contentView.leadingAnchor,
+                                paddingTop: 32,
+                                paddingLeft: 26)
+        
+        contentView.addSubview(artworkImageView)
+        artworkImageView.setDimensions(height: 100, width: 100)
+        artworkImageView.anchor(top: playStatusLabel.bottomAnchor,
+                                left: contentView.leadingAnchor,
+                                bottom: contentView.bottomAnchor,
+                                paddingTop: 10,
+                                paddingLeft: 10,
+                                paddingBottom: 45)
+        
+        contentView.addSubview(shortTrackNameLabel)
+        shortTrackNameLabel.anchor(top: artworkImageView.topAnchor,
+                                   left: artworkImageView.trailingAnchor,
+                                   paddingTop: 25,
+                                   paddingLeft: 28)
+        
+        contentView.addSubview(trackTimeLabel)
+        trackTimeLabel.centerYAnchor.constraint(equalTo: shortTrackNameLabel.centerYAnchor).isActive = true
+        trackTimeLabel.anchor(left: shortTrackNameLabel.trailingAnchor,
+                              right: contentView.trailingAnchor,
+                              paddingLeft: 10,
+                              paddingRight: 10)
     }
 }
