@@ -18,6 +18,8 @@
 		EDFFC5B42C436F760012C8A4 /* MusicListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5B32C436F760012C8A4 /* MusicListUITests.swift */; };
 		EDFFC5B62C436F760012C8A4 /* MusicListUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5B52C436F760012C8A4 /* MusicListUITestsLaunchTests.swift */; };
 		EDFFC5C42C4370D10012C8A4 /* PlayListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5C32C4370D10012C8A4 /* PlayListCell.swift */; };
+		EDFFC5CC2C4373390012C8A4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5CB2C4373390012C8A4 /* UIImage+Extensions.swift */; };
+		EDFFC5CE2C43735D0012C8A4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5CD2C43735D0012C8A4 /* UIView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		EDFFC5B32C436F760012C8A4 /* MusicListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListUITests.swift; sourceTree = "<group>"; };
 		EDFFC5B52C436F760012C8A4 /* MusicListUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EDFFC5C32C4370D10012C8A4 /* PlayListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCell.swift; sourceTree = "<group>"; };
+		EDFFC5CB2C4373390012C8A4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		EDFFC5CD2C43735D0012C8A4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +107,13 @@
 		EDFFC58E2C436F6C0012C8A4 /* MusicList */ = {
 			isa = PBXGroup;
 			children = (
+				EDFFC5CA2C4373000012C8A4 /* ViewController */,
+				EDFFC5C92C4372CD0012C8A4 /* Utilities */,
+				EDFFC5C82C4372BE0012C8A4 /* Extension */,
+				EDFFC5C72C4372B00012C8A4 /* Model */,
+				EDFFC5C62C4372AB0012C8A4 /* Service */,
+				EDFFC5C52C43729D0012C8A4 /* ViewModel */,
 				EDFFC5C22C4370A40012C8A4 /* Views */,
-				EDFFC58F2C436F6C0012C8A4 /* AppDelegate.swift */,
-				EDFFC5912C436F6C0012C8A4 /* SceneDelegate.swift */,
-				EDFFC5932C436F6C0012C8A4 /* HomeViewController.swift */,
-				EDFFC5952C436F6C0012C8A4 /* Main.storyboard */,
-				EDFFC59B2C436F760012C8A4 /* Assets.xcassets */,
-				EDFFC59D2C436F760012C8A4 /* LaunchScreen.storyboard */,
-				EDFFC5A02C436F760012C8A4 /* Info.plist */,
-				EDFFC5982C436F6C0012C8A4 /* MusicList.xcdatamodeld */,
 			);
 			path = MusicList;
 			sourceTree = "<group>";
@@ -139,6 +141,58 @@
 				EDFFC5C32C4370D10012C8A4 /* PlayListCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EDFFC5C52C43729D0012C8A4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EDFFC5C62C4372AB0012C8A4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EDFFC5C72C4372B00012C8A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EDFFC5C82C4372BE0012C8A4 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				EDFFC5CB2C4373390012C8A4 /* UIImage+Extensions.swift */,
+				EDFFC5CD2C43735D0012C8A4 /* UIView+Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		EDFFC5C92C4372CD0012C8A4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EDFFC5982C436F6C0012C8A4 /* MusicList.xcdatamodeld */,
+				EDFFC58F2C436F6C0012C8A4 /* AppDelegate.swift */,
+				EDFFC5912C436F6C0012C8A4 /* SceneDelegate.swift */,
+				EDFFC5952C436F6C0012C8A4 /* Main.storyboard */,
+				EDFFC59B2C436F760012C8A4 /* Assets.xcassets */,
+				EDFFC59D2C436F760012C8A4 /* LaunchScreen.storyboard */,
+				EDFFC5A02C436F760012C8A4 /* Info.plist */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EDFFC5CA2C4373000012C8A4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EDFFC5932C436F6C0012C8A4 /* HomeViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,9 +326,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFFC5CE2C43735D0012C8A4 /* UIView+Extensions.swift in Sources */,
 				EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */,
 				EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */,
 				EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */,
+				EDFFC5CC2C4373390012C8A4 /* UIImage+Extensions.swift in Sources */,
 				EDFFC59A2C436F6C0012C8A4 /* MusicList.xcdatamodeld in Sources */,
 				EDFFC5C42C4370D10012C8A4 /* PlayListCell.swift in Sources */,
 			);
