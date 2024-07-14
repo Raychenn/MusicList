@@ -1,0 +1,40 @@
+# Xcode project files and directories
+.DS_Store                 # macOS Finder metadata
+build/                    # Xcode build output
+DerivedData/              # Xcode intermediate build files
+xcuserdata/               # User data
+
+# Xcode specific
+*.pbxuser                 # Xcode project user settings
+!default.pbxuser          # Allow the default pbxuser file
+*.mode1v3                 # Xcode project user settings
+!default.mode1v3          # Allow the default mode1v3 file
+*.mode2v3                 # Xcode project user settings
+!default.mode2v3          # Allow the default mode2v3 file
+*.perspectivev3           # Xcode user interface layout
+!default.perspectivev3    # Allow the default perspectivev3 file
+
+# Swift Package Manager
+.build/                   # SPM build output
+
+# CocoaPods dependencies
+Pods/                     # CocoaPods dependencies
+Podfile.lock              # CocoaPods lock file
+
+# Carthage dependencies
+Carthage/Build/           # Carthage build output
+
+# Fastlane specific
+fastlane/report.xml       # Fastlane report files
+fastlane/Preview.html     # Fastlane preview files
+fastlane/screenshots      # Fastlane screenshots
+fastlane/test_output      # Fastlane test output
+
+# Xcode workspace
+*.xcworkspace             # Xcode workspace files
+!*.xcworkspace/contents.xcworkspacedata # Keep workspace data
+!*.xcworkspace/xcshareddata # Keep shared workspace data
+!*.xcworkspace/xcuserdata  # Keep user-specific workspace data
+
+# Xcode shared data
+xcshareddata/             # Xcode shared data
