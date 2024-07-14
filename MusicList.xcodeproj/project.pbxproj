@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */; };
+		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
+		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
 		EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC58F2C436F6C0012C8A4 /* AppDelegate.swift */; };
 		EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5912C436F6C0012C8A4 /* SceneDelegate.swift */; };
 		EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5932C436F6C0012C8A4 /* HomeViewController.swift */; };
@@ -40,6 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EDFFC58C2C436F6C0012C8A4 /* MusicList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDFFC58F2C436F6C0012C8A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDFFC5912C436F6C0012C8A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				EDFFC5C32C4370D10012C8A4 /* PlayListCell.swift */,
+				EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -154,6 +161,7 @@
 		EDFFC5C62C4372AB0012C8A4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				EDB820A72C44030F00EE2A3C /* NetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 			children = (
 				EDFFC5CB2C4373390012C8A4 /* UIImage+Extensions.swift */,
 				EDFFC5CD2C43735D0012C8A4 /* UIView+Extensions.swift */,
+				EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -326,11 +335,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */,
 				EDFFC5CE2C43735D0012C8A4 /* UIView+Extensions.swift in Sources */,
 				EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */,
 				EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */,
+				EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */,
 				EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */,
 				EDFFC5CC2C4373390012C8A4 /* UIImage+Extensions.swift in Sources */,
+				EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */,
 				EDFFC59A2C436F6C0012C8A4 /* MusicList.xcdatamodeld in Sources */,
 				EDFFC5C42C4370D10012C8A4 /* PlayListCell.swift in Sources */,
 			);
