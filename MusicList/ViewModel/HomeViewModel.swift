@@ -20,7 +20,7 @@ class HomeViewModel {
     
     
     func fetchMediaItems() {
-        NetworkService.shared.fetchMusicList { [weak self] result in
+        NetworkService.shared.fetchMusicList(searchText: "jason mars") { [weak self] result in
             guard let self else { 
                 return
             }
