@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED06DF902C453F4200DB82AC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF8F2C453F4200DB82AC /* HomeViewModel.swift */; };
 		EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */; };
 		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
 		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ED06DF8F2C453F4200DB82AC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 		EDFFC5C52C43729D0012C8A4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				ED06DF8F2C453F4200DB82AC /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */,
 				EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */,
 				EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */,
+				ED06DF902C453F4200DB82AC /* HomeViewModel.swift in Sources */,
 				EDFFC5CC2C4373390012C8A4 /* UIImage+Extensions.swift in Sources */,
 				EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */,
 				EDFFC59A2C436F6C0012C8A4 /* MusicList.xcdatamodeld in Sources */,

@@ -63,20 +63,15 @@ class HomeViewController: UIViewController {
         return button
     }()
     
+    let viewModel = HomeViewModel()
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         swtupUI()
         
-        NetworkService.shared.fetchMusicList { result in
-            switch result {
-            case .success(let items):
-                print("items: \(items)")
-            case .failure(let error):
-                print("error: \(error)")
-            }
-        }
+        viewModel.fetchMediaItems()
     }
     
     // MARK: - Helpers
