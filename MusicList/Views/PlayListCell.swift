@@ -33,7 +33,7 @@ class PlayListCell: UICollectionViewCell {
     private let trackTimeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
-        label.textColor = .black
+        label.textColor = .darkGray
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "4:15"
         return label
@@ -42,7 +42,7 @@ class PlayListCell: UICollectionViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .lightGray
         label.font = .systemFont(ofSize: 12, weight: .regular)
         label.text = "long description:  here is description, pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long. pretty long."
         return label

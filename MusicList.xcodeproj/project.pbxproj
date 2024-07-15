@@ -10,6 +10,7 @@
 		EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */; };
 		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
 		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
+		EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A92C44072E00EE2A3C /* SearchResponse.swift */; };
 		EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC58F2C436F6C0012C8A4 /* AppDelegate.swift */; };
 		EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5912C436F6C0012C8A4 /* SceneDelegate.swift */; };
 		EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFFC5932C436F6C0012C8A4 /* HomeViewController.swift */; };
@@ -46,6 +47,7 @@
 		EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		EDB820A92C44072E00EE2A3C /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		EDFFC58C2C436F6C0012C8A4 /* MusicList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDFFC58F2C436F6C0012C8A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDFFC5912C436F6C0012C8A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 		EDFFC5C72C4372B00012C8A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EDB820A92C44072E00EE2A3C /* SearchResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			files = (
 				EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */,
 				EDFFC5CE2C43735D0012C8A4 /* UIView+Extensions.swift in Sources */,
+				EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */,
 				EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */,
 				EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */,
 				EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */,
