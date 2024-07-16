@@ -23,6 +23,8 @@ protocol HomeViewModelProtocol {
 
 class HomeViewModel: HomeViewModelProtocol {
     
+    // MARK: - Properties
+    
     weak var delegate: HomeViewModelDelegate?
     
     private var mediaItems: [MediaItem]?
@@ -30,6 +32,16 @@ class HomeViewModel: HomeViewModelProtocol {
     var selectedIndex: Int?
     
     private var playListCellViewModels: [PlayListCellViewModel] = []
+    
+    private let service: NetworkServiceProtocol
+    
+    // MARK: - Life cycle
+    
+    init(service: NetworkServiceProtocol) {
+        self.service = service
+    }
+    
+    // MARK: - Helpers
     
     func numberOfItems() -> Int {
         playListCellViewModels.count
@@ -40,7 +52,7 @@ class HomeViewModel: HomeViewModelProtocol {
     }
         
     func fetchMediaItems(with text: String) {
-        NetworkService.shared.fetchMusicList(searchText: text) { [weak self] result in
+        service.fetchMusicList(searchText: text) { [weak self] result in
             guard let self else {
                 return
             }

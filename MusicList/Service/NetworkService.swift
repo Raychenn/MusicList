@@ -7,7 +7,14 @@
 
 import Foundation
 
-final class NetworkService: HTTPDataDownloader {
+protocol NetworkServiceProtocol {
+    func fetchMusicList(
+        searchText: String,
+        completion: @escaping (Result<[MediaItem], APIError>) -> Void
+    )
+}
+
+final class NetworkService: HTTPDataDownloader, NetworkServiceProtocol {
     private let urlString = "https://itunes.apple.com/search?term=jason mars"
     private var baseURLComponents: URLComponents {
         var components = URLComponents()

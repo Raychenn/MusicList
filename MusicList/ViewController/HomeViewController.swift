@@ -38,7 +38,8 @@ class HomeViewController: UIViewController {
             return
         }
         
-        print("search text: \(searchText)")
+        // "jason mars"
+        viewModel.fetchMediaItems(with: searchText)
     }
     
     private lazy var searchTextField: UITextField = {
@@ -75,7 +76,7 @@ class HomeViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = HomeViewModel()
+        self.viewModel = HomeViewModel(service: NetworkService.shared)
         super.init(coder: coder)
     }
     
@@ -83,7 +84,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         swtupUI()
         
-        viewModel.fetchMediaItems(with: "jason mars")
+        
     }
     
     // MARK: - Helpers
