@@ -31,6 +31,8 @@ class HomeViewController: UIViewController {
         return label
     }()
     
+    private let networkDebouncer = Debouncer(delay: 0.5)
+    
     private lazy var searchAction = UIAction { [weak self]_ in
         guard let self,
               let searchText = self.searchTextField.text,
@@ -38,8 +40,12 @@ class HomeViewController: UIViewController {
             return
         }
         
-        // "jason mars"
-        viewModel.fetchMediaItems(with: searchText)
+        networkDebouncer.schedule { [weak self] in
+            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+                guard let self else { return }
+                self.viewModel.fetchMediaItems(with: searchText)
+            }
+        }
     }
     
     private lazy var searchTextField: UITextField = {

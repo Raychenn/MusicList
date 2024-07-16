@@ -11,6 +11,7 @@
 		ED06DF942C4548B800DB82AC /* HTTPDataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF932C4548B800DB82AC /* HTTPDataDownloader.swift */; };
 		ED06DF962C4548DA00DB82AC /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF952C4548DA00DB82AC /* APIError.swift */; };
 		ED06DF982C454D3A00DB82AC /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */; };
+		ED06DF9A2C46A30200DB82AC /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF992C46A30200DB82AC /* Debouncer.swift */; };
 		EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */; };
 		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
 		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
@@ -52,6 +53,7 @@
 		ED06DF932C4548B800DB82AC /* HTTPDataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataDownloader.swift; sourceTree = "<group>"; };
 		ED06DF952C4548DA00DB82AC /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
+		ED06DF992C46A30200DB82AC /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				EDB820A72C44030F00EE2A3C /* NetworkService.swift */,
+				ED06DF992C46A30200DB82AC /* Debouncer.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */,
+				ED06DF9A2C46A30200DB82AC /* Debouncer.swift in Sources */,
 				EDFFC5CE2C43735D0012C8A4 /* UIView+Extensions.swift in Sources */,
 				EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */,
 				EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */,
