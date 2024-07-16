@@ -16,11 +16,13 @@ struct MediaItem: Codable {
     let artWorkURL: String?
     let trackTime: Int?
     let longDescription: String?
+    let previewURL: String?
     
     enum CodingKeys: String, CodingKey {
         case trackName
         case artWorkURL = "artworkUrl100"
         case trackTime = "trackTimeMillis"
         case longDescription
+        case previewURL = "previewUrl"
     }
 }

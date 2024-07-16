@@ -13,7 +13,6 @@ class PlayListCell: UICollectionViewCell {
     
     private let artworkImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(resource: .artwork)
         imageView.clipsToBounds = true
         imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
@@ -53,19 +52,26 @@ class PlayListCell: UICollectionViewCell {
         label.numberOfLines = 1
         label.textColor = .black
         label.font = .systemFont(ofSize: 12, weight: .regular)
-        label.text = "正在播放 ▶️"
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-        backgroundColor = .red
-        setupUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        artworkImageView.image = nil
+        trackNameLabel.text = nil
+        trackTimeLabel.text = nil
+        descriptionLabel.text = nil
+        playStatusLabel.text = nil 
     }
     
     // MARK: - Helper
@@ -92,10 +98,11 @@ class PlayListCell: UICollectionViewCell {
         
         contentView.addSubview(artworkImageView)
         artworkImageView.setDimensions(height: 100, width: 100)
-        artworkImageView.anchor(top: playStatusLabel.bottomAnchor,
+        artworkImageView.anchor(top: contentView.topAnchor,
                                 left: contentView.leadingAnchor,
-                                paddingTop: 10,
-                                paddingLeft: 10)
+                                bottom: contentView.bottomAnchor,
+                                paddingTop: 72,
+                                paddingLeft: 10, paddingBottom: 72)
     
         contentView.addSubview(descriptionLabel)
         descriptionLabel.anchor(top: artworkImageView.topAnchor,
@@ -103,5 +110,23 @@ class PlayListCell: UICollectionViewCell {
                                 bottom: contentView.bottomAnchor,
                                 right: contentView.trailingAnchor,
                                 paddingLeft: 18, paddingBottom: 22)
+    }
+    
+    func configure(with viewModel: PlayListCellViewModel) {
+        artworkImageView.loadImageUsingCache(withUrl: viewModel.artworkURLString ?? "",
+                                             placeHolder: UIImage(resource: .artwork))
+        
+        trackNameLabel.text = viewModel.trackName
+        
+        trackTimeLabel.text = viewModel.trackTime
+        
+        descriptionLabel.text = viewModel.description
+        
+        playStatusLabel.text = viewModel.playStatusText
+    }
+    
+    func updatePlayStatus(with text: String?) {
+        playStatusLabel.text = text
+        layoutIfNeeded()
     }
 }

@@ -10,6 +10,7 @@
 		ED06DF902C453F4200DB82AC /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF8F2C453F4200DB82AC /* HomeViewModel.swift */; };
 		ED06DF942C4548B800DB82AC /* HTTPDataDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF932C4548B800DB82AC /* HTTPDataDownloader.swift */; };
 		ED06DF962C4548DA00DB82AC /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF952C4548DA00DB82AC /* APIError.swift */; };
+		ED06DF982C454D3A00DB82AC /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */; };
 		EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */; };
 		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
 		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
@@ -50,6 +51,7 @@
 		ED06DF8F2C453F4200DB82AC /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		ED06DF932C4548B800DB82AC /* HTTPDataDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPDataDownloader.swift; sourceTree = "<group>"; };
 		ED06DF952C4548DA00DB82AC /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
 		EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				ED06DF8F2C453F4200DB82AC /* HomeViewModel.swift */,
+				ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				EDFFC5CC2C4373390012C8A4 /* UIImage+Extensions.swift in Sources */,
 				EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */,
 				EDFFC59A2C436F6C0012C8A4 /* MusicList.xcdatamodeld in Sources */,
+				ED06DF982C454D3A00DB82AC /* PlayListCellViewModel.swift in Sources */,
 				ED06DF942C4548B800DB82AC /* HTTPDataDownloader.swift in Sources */,
 				EDFFC5C42C4370D10012C8A4 /* PlayListCell.swift in Sources */,
 				ED06DF962C4548DA00DB82AC /* APIError.swift in Sources */,

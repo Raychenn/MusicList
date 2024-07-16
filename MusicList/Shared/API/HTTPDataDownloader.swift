@@ -10,17 +10,17 @@ import Foundation
 protocol HTTPDataDownloader {
     func fetchData<T>(
         as type: T.Type,
-        endPoint: String,
+        endPointURL: URL?,
         completion: @escaping (Result<T, APIError>) -> Void
     ) where T : Decodable
 }
 
 extension HTTPDataDownloader {
     func fetchData<T: Decodable>(as type: T.Type,
-                                 endPoint: String,
+                                 endPointURL: URL?,
                                  completion: @escaping (Result<T, APIError>) -> Void)
     {
-        guard let url = URL(string: endPoint) else {
+        guard let url = endPointURL else {
             completion(.failure(.requestFailed(description: "Invalid URL")))
             return
         }

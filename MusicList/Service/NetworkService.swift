@@ -17,13 +17,13 @@ final class NetworkService: HTTPDataDownloader {
         return components
     }
     
-    private func composedSearchURLString(with text: String) -> String? {
+    private func composedSearchURL(with text: String) -> URL? {
         var components = baseURLComponents
         components.queryItems = [
-            .init(name: "term", value: text)
+            URLQueryItem(name: "term", value: text)
         ]
         
-        return components.url?.absoluteString
+        return components.url
     }
     
     static let shared = NetworkService()
@@ -31,11 +31,12 @@ final class NetworkService: HTTPDataDownloader {
     private init() {}
     
     func fetchMusicList(searchText: String, completion: @escaping (Result<[MediaItem], APIError>) -> Void) {
-        guard let searchURLString = composedSearchURLString(with: searchText) else {
+        guard let searchURL = composedSearchURL(with: searchText) else {
             completion(.failure(.requestFailed(description: "Invalid Endpoint")))
             return
         }
-        fetchData(as: SearchResponse.self, endPoint: searchURLString) { result in
+        
+        fetchData(as: SearchResponse.self, endPointURL: searchURL) { result in
             switch result {
             case .success(let response):
                 completion(.success(response.results))
@@ -45,3 +46,4 @@ final class NetworkService: HTTPDataDownloader {
         }
     }
 }
+    

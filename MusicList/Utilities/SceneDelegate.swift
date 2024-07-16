@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        let dataLoader = DataLoader.shared
 //        let homeInteractor = HomeInteractor(loader: dataLoader)
 //        let homePresenter = HomePresenter(interactor: homeInteractor)
-        window?.rootViewController = HomeViewController()
+        let homeViewModel = HomeViewModel()
+        window?.rootViewController = HomeViewController(viewModel: homeViewModel)
         window?.makeKeyAndVisible()
     }
 

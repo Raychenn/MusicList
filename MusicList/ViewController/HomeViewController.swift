@@ -63,15 +63,27 @@ class HomeViewController: UIViewController {
         return button
     }()
     
-    let viewModel = HomeViewModel()
+    var viewModel: HomeViewModelProtocol
     
     // MARK: - Life Cycle
+    
+    required init(viewModel: HomeViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+
+    }
+    
+    required init?(coder: NSCoder) {
+        self.viewModel = HomeViewModel()
+        super.init(coder: coder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         swtupUI()
         
-        viewModel.fetchMediaItems()
+        viewModel.fetchMediaItems(with: "jason mars")
     }
     
     // MARK: - Helpers
@@ -110,17 +122,44 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        viewModel.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let playListCell = collectionView.dequeueReusableCell(withReuseIdentifier: PlayListCell.className(), for: indexPath) as? PlayListCell else {
             return UICollectionViewCell()
         }
-        
+        let cellViewModel = viewModel.cellForItemAt(indexPath)
+        playListCell.configure(with: cellViewModel)
         return playListCell
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate {}
+// MARK: - UICollectionViewDelegate
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.selectItem(at: indexPath.item)
+    }
+}
+
+// MARK: - HomeViewModelDelegate
+
+extension HomeViewController: HomeViewModelDelegate {
+    func didLoadData(_ self: HomeViewModel) {
+        collectionView.reloadData()
+    }
+    
+    func didUpdateUI(_ self: HomeViewModel, playStatusText: String?, indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PlayListCell else {
+            return
+        }
+        
+        cell.updatePlayStatus(with: playStatusText)
+    }
+    
+    func didFailToFetchData(_ self: HomeViewModel, error: APIError) {
+        print("api error: \(error)")
+    }
+}
 

@@ -8,30 +8,84 @@
 import Foundation
 
 protocol HomeViewModelDelegate: AnyObject {
-    func didFetchMediaItems(_ self: HomeViewModel, items: [MediaItem])
-    func didFailToFetchMediaItems(_ self: HomeViewModel, error: APIError)
+    func didLoadData(_ self: HomeViewModel)
+    func didUpdateUI(_ self: HomeViewModel, playStatusText: String?, indexPath: IndexPath)
+    func didFailToFetchData(_ self: HomeViewModel, error: APIError)
 }
 
-class HomeViewModel {
+protocol HomeViewModelProtocol {
+    func fetchMediaItems(with text: String)
+    func numberOfItems() -> Int
+    func cellForItemAt(_ indexPath: IndexPath) -> PlayListCellViewModel
+    func selectItem(at index: Int)
+    var delegate: HomeViewModelDelegate? { get set }
+}
+
+class HomeViewModel: HomeViewModelProtocol {
     
     weak var delegate: HomeViewModelDelegate?
     
-    var mediaItems: [MediaItem]?
+    private var mediaItems: [MediaItem]?
     
+    var selectedIndex: Int?
     
-    func fetchMediaItems() {
-        NetworkService.shared.fetchMusicList(searchText: "jason mars") { [weak self] result in
-            guard let self else { 
+    private var playListCellViewModels: [PlayListCellViewModel] = []
+    
+    func numberOfItems() -> Int {
+        playListCellViewModels.count
+    }
+    
+    func cellForItemAt(_ indexPath: IndexPath) -> PlayListCellViewModel {
+        playListCellViewModels[indexPath.row]
+    }
+        
+    func fetchMediaItems(with text: String) {
+        NetworkService.shared.fetchMusicList(searchText: text) { [weak self] result in
+            guard let self else {
                 return
             }
-            switch result {
-            case .success(let items):
-                print("items: \(items)")
-                self.mediaItems = items
-            case .failure(let error):
-                self.delegate?.didFailToFetchMediaItems(self, error: error)
-                print("error: \(error)")
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let items):
+                    self.playListCellViewModels = self.map(items)
+                    self.delegate?.didLoadData(self)
+                case .failure(let error):
+                    self.delegate?.didFailToFetchData(self, error: error)
+                }
             }
         }
+    }
+    
+    func map(_ mediaItems: [MediaItem]) -> [PlayListCellViewModel] {
+        return mediaItems.compactMap { item in
+            return PlayListCellViewModel(artworkURLString: item.artWorkURL,
+                                         trackName: item.trackName,
+                                         description: item.longDescription,
+                                         trackTime: formatTime(seconds: item.trackTime ?? 0),
+                                         previewURLString: item.previewURL,
+                                         playStatusText: "",
+                                         isPlaying: false)
+        }
+    }
+    
+    func selectItem(at index: Int) {
+        guard index >= 0 && index < playListCellViewModels.count else { return }
+        // Deselect previously selected item
+        if let previousIndex = selectedIndex, previousIndex != index {
+            playListCellViewModels[previousIndex].isPlaying = false
+            playListCellViewModels[previousIndex].playStatusText = nil
+            delegate?.didUpdateUI(self, playStatusText: nil, indexPath: IndexPath(item: previousIndex, section: 0))
+        }
+        
+        selectedIndex = index
+        playListCellViewModels[index].isPlaying.toggle()
+        playListCellViewModels[index].playStatusText = playListCellViewModels[index].isPlaying ? "正在播放 ▶️" : "正在播放 ⏸️"
+        delegate?.didUpdateUI(self, playStatusText: playListCellViewModels[index].playStatusText, indexPath: IndexPath(item: index, section: 0))
+    }
+    
+    func formatTime(seconds: Int) -> String {
+        let minutes = seconds / 60
+        let remainingSeconds = seconds % 60
+        return String(format: "%d:%02d", minutes, remainingSeconds)
     }
 }
