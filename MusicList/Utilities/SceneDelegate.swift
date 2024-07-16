@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         let service = NetworkService.shared
-        let homeViewModel = HomeViewModel(service: service)
+        let player = AudioPlayer()
+        let homeViewModel = HomeViewModel(service: service, audioPlayer: player)
         window?.rootViewController = HomeViewController(viewModel: homeViewModel)
         window?.makeKeyAndVisible()
     }

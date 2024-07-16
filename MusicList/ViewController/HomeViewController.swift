@@ -82,7 +82,7 @@ class HomeViewController: UIViewController {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = HomeViewModel(service: NetworkService.shared)
+        self.viewModel = HomeViewModel(service: NetworkService.shared, audioPlayer: AudioPlayer())
         super.init(coder: coder)
     }
     

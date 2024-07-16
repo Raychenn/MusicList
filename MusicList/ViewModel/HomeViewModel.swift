@@ -35,10 +35,13 @@ class HomeViewModel: HomeViewModelProtocol {
     
     private let service: NetworkServiceProtocol
     
+    private let player: AudioPlayerProtocol
+    
     // MARK: - Life cycle
     
-    init(service: NetworkServiceProtocol) {
+    init(service: NetworkServiceProtocol, audioPlayer: AudioPlayerProtocol) {
         self.service = service
+        self.player = audioPlayer
     }
     
     // MARK: - Helpers
@@ -91,13 +94,43 @@ class HomeViewModel: HomeViewModelProtocol {
         
         selectedIndex = index
         playListCellViewModels[index].isPlaying.toggle()
-        playListCellViewModels[index].playStatusText = playListCellViewModels[index].isPlaying ? "正在播放 ▶️" : "正在播放 ⏸️"
+        let isPlaying = playListCellViewModels[index].isPlaying
+        playListCellViewModels[index].playStatusText = isPlaying ? "正在播放 ▶️" : "正在播放 ⏸️"
         delegate?.didUpdateUI(self, playStatusText: playListCellViewModels[index].playStatusText, indexPath: IndexPath(item: index, section: 0))
+        
+        guard let targetAudioURLString = playListCellViewModels[index].previewURLString,
+           let audioURL = URL(string: targetAudioURLString) else {
+            return
+        }
+        
+        if isPlaying {
+            resetPlayer()
+            play(url: audioURL)
+        } else {
+            pause()
+        }
     }
     
     func formatTime(seconds: Int) -> String {
         let minutes = seconds / 60
         let remainingSeconds = seconds % 60
         return String(format: "%d:%02d", minutes, remainingSeconds)
+    }
+}
+
+// MARK: - Player
+
+extension HomeViewModel {
+    func play(url: URL) {
+        player.load(url: url)
+        player.play()
+    }
+    
+    func pause() {
+        player.pause()
+    }
+    
+    func resetPlayer() {
+        player.reset()
     }
 }
