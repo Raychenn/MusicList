@@ -34,9 +34,9 @@ class HomeViewModel: HomeViewModelProtocol {
     
     private var mediaItems: [MediaItem]?
     
-    var selectedIndex: Int?
+    private(set) var selectedIndex: Int?
     
-    private var playListCellViewModels: [PlayListCellViewModel] = []
+    private(set) var playListCellViewModels: [PlayListCellViewModel] = []
     
     private let service: NetworkServiceProtocol
     

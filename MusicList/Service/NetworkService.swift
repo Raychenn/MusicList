@@ -15,7 +15,11 @@ protocol NetworkServiceProtocol {
 }
 
 final class NetworkService: HTTPDataDownloader, NetworkServiceProtocol {
-    private let urlString = "https://itunes.apple.com/search?term=jason mars"
+    
+    static let shared = NetworkService()
+    
+    private init() {}
+
     private var baseURLComponents: URLComponents {
         var components = URLComponents()
         components.scheme = "https"
@@ -33,9 +37,7 @@ final class NetworkService: HTTPDataDownloader, NetworkServiceProtocol {
         return components.url
     }
     
-    static let shared = NetworkService()
-    
-    private init() {}
+
     
     func fetchMusicList(searchText: String, completion: @escaping (Result<[MediaItem], APIError>) -> Void) {
         guard let searchURL = composedSearchURL(with: searchText) else {
@@ -53,4 +55,3 @@ final class NetworkService: HTTPDataDownloader, NetworkServiceProtocol {
         }
     }
 }
-    
