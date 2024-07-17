@@ -18,6 +18,11 @@ protocol HomeViewModelProtocol {
     func numberOfItems() -> Int
     func cellForItemAt(_ indexPath: IndexPath) -> PlayListCellViewModel
     func selectItem(at index: Int)
+    
+    func play(url: URL)
+    func pause()
+    func resetPlayer(completion: () -> Void)
+    
     var delegate: HomeViewModelDelegate? { get set }
 }
 
@@ -104,17 +109,20 @@ class HomeViewModel: HomeViewModelProtocol {
         }
         
         if isPlaying {
-            resetPlayer()
-            play(url: audioURL)
+            resetPlayer { 
+                play(url: audioURL)
+            }
         } else {
             pause()
         }
     }
     
     func formatTime(seconds: Int) -> String {
-        let minutes = seconds / 60
-        let remainingSeconds = seconds % 60
-        return String(format: "%d:%02d", minutes, remainingSeconds)
+        let totalSeconds = seconds / 1000
+        let minutes = totalSeconds / 60
+        let seconds = totalSeconds % 60
+        
+        return String(format: "%d:%02d", minutes, seconds)
     }
 }
 
@@ -130,7 +138,8 @@ extension HomeViewModel {
         player.pause()
     }
     
-    func resetPlayer() {
+    func resetPlayer(completion: () -> Void) {
         player.reset()
+        completion()
     }
 }

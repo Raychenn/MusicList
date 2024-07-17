@@ -13,7 +13,6 @@
 		ED06DF982C454D3A00DB82AC /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */; };
 		ED06DF9A2C46A30200DB82AC /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF992C46A30200DB82AC /* Debouncer.swift */; };
 		ED06DF9D2C46A47000DB82AC /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF9C2C46A47000DB82AC /* AudioPlayer.swift */; };
-		EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */; };
 		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
 		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
 		EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A92C44072E00EE2A3C /* SearchResponse.swift */; };
@@ -56,7 +55,6 @@
 		ED06DF972C454D3A00DB82AC /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
 		ED06DF992C46A30200DB82AC /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		ED06DF9C2C46A47000DB82AC /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
 		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EDB820A92C44072E00EE2A3C /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
@@ -187,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				EDFFC5C32C4370D10012C8A4 /* PlayListCell.swift */,
-				EDB820A32C43C50000EE2A3C /* SearchHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,7 +383,6 @@
 				EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */,
 				EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */,
 				EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */,
-				EDB820A42C43C50000EE2A3C /* SearchHeaderView.swift in Sources */,
 				EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */,
 				ED06DF902C453F4200DB82AC /* HomeViewModel.swift in Sources */,
 				EDFFC5CC2C4373390012C8A4 /* UIImage+Extensions.swift in Sources */,

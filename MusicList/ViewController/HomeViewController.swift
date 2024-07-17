@@ -43,7 +43,9 @@ class HomeViewController: UIViewController {
         networkDebouncer.schedule { [weak self] in
             DispatchQueue.global(qos: .userInteractive).async { [weak self] in
                 guard let self else { return }
-                self.viewModel.fetchMediaItems(with: searchText)
+                self.viewModel.resetPlayer {
+                    self.viewModel.fetchMediaItems(with: searchText)
+                }
             }
         }
     }
@@ -89,8 +91,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         swtupUI()
-        
-        
     }
     
     // MARK: - Helpers

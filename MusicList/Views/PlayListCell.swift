@@ -55,6 +55,22 @@ class PlayListCell: UICollectionViewCell {
         return label
     }()
     
+    private lazy var hStack: UIStackView = {
+        let spacerView = UIView()
+        spacerView.backgroundColor = .clear
+        spacerView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        spacerView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+       let stack = UIStackView(arrangedSubviews: [
+            trackNameLabel,
+            spacerView,
+            trackTimeLabel
+       ])
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .horizontal
+        stack.spacing = 10
+        return stack
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -83,18 +99,13 @@ class PlayListCell: UICollectionViewCell {
                                 paddingTop: 32,
                                 paddingLeft: 26)
         
-        contentView.addSubview(trackNameLabel)
-        trackNameLabel.anchor(top: contentView.topAnchor,
-                              left: contentView.leadingAnchor,
-                          paddingTop: 22,
-                          paddingLeft: 138)
-        
-        contentView.addSubview(trackTimeLabel)
-        trackTimeLabel.centerYAnchor.constraint(equalTo: trackNameLabel.centerYAnchor).isActive = true
-        trackTimeLabel.anchor(left: trackNameLabel.trailingAnchor,
-                              right: contentView.trailingAnchor,
-                              paddingLeft: 10,
-                              paddingRight: 40)
+        contentView.addSubview(hStack)
+        hStack.anchor(top: contentView.topAnchor,
+                      left: contentView.leadingAnchor,
+                      right: contentView.trailingAnchor,
+                      paddingTop: 10,
+                      paddingLeft: 138,
+                      paddingRight: 20)
         
         contentView.addSubview(artworkImageView)
         artworkImageView.setDimensions(height: 100, width: 100)
