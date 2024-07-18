@@ -4,10 +4,9 @@
 1. [Project Overview](#project-overview)
 2. [Features](#features)
 3. [Skills Demonstrated](#skills-demonstrated)
-4. [Unit Testing](#unit-testing)
-5. [Dependencies](#dependencies)
-6. [AI Tools Utilized](#ai-tools-utilized)
-7. [Contact](#contact)
+4. [Dependencies](#dependencies)
+5. [AI Tools Utilized](#ai-tools-utilized)
+6. [Contact](#contact)
 
 ## Project Overview
 This project is an iOS application that showcases various advanced iOS development techniques and best practices, including MVVM architecture, dependency injection, and more. The app includes functionalities such as playing music, a custom network debouncer, and programmatic layout of UI components.
@@ -44,11 +43,6 @@ This project benefited from the use of AI tools like ChatGPT for various tasks:
 - **Idea Generation**: Provided useful suggestions for structuring and enhancing the project.
 - **Debugging UI Problems**: Helped troubleshoot and resolve UI issues.
 - **README Production**: Generated an initial README template that was further customized.
-
-## Unit Testing
-The project includes unit tests for mainly ViewModel since it includes most of the business logic. To run the tests:
-1. Select the `YourProjectTests` target in Xcode.
-2. Click the Test button or use the shortcut `Command-U`.
 
 ## Dependencies
 - **No third-party libraries used**. The project relies solely on the native iOS frameworks.
