@@ -54,4 +54,4 @@ The project includes unit tests for mainly ViewModel since it includes most of t
 - **No third-party libraries used**. The project relies solely on the native iOS frameworks.
 
 ## Contact
-For any questions or suggestions, please feel free to contact me at [your.email@example.com](mailto:r0975929562@gmail.com).
+For any questions or suggestions, please feel free to contact me at [r0975929562@gmail.com](mailto:r0975929562@gmail.com).
