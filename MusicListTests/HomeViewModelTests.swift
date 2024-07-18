@@ -30,9 +30,9 @@ final class HomeViewModelTests: XCTestCase {
         viewModel.fetchMediaItems(with: "test")
     
         // Assert
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.async {
             XCTAssertEqual(viewModel.numberOfItems(), 3)
-        })
+        }
     }
     
     func testMusicListInvalidJSON() {
@@ -48,11 +48,11 @@ final class HomeViewModelTests: XCTestCase {
         viewModel.fetchMediaItems(with: "test")
     
         // Assert
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.async {
             XCTAssertEqual(viewModel.numberOfItems(), 0)
             XCTAssertTrue(mockDelegate.didReceiveErrorCalled, "Delegate's didReceiveError should be called")
             XCTAssertEqual(mockDelegate.receivedErrorMessage, errorMessage, "Delegate should receive correct error message")
-        })
+        }
     }
     
     func testInvalidDataError() {
@@ -62,17 +62,16 @@ final class HomeViewModelTests: XCTestCase {
         let mockDelegate = MockHomeViewModelDelegate()
         let viewModel = HomeViewModel(service: service, audioPlayer: AudioPlayer())
         viewModel.delegate = mockDelegate
-        let errorMessage = "Failed to parse JSON"
         
         // Act
         viewModel.fetchMediaItems(with: "test")
     
         // Assert
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.async {
             XCTAssertEqual(viewModel.numberOfItems(), 0)
             XCTAssertTrue(mockDelegate.didReceiveErrorCalled, "Delegate's didReceiveError should be called")
             XCTAssertEqual(mockDelegate.receivedErrorMessage, APIError.invalidData.customDescription, "Delegate should receive correct error message")
-        })
+        }
     }
     
     func testInvalidStatusCodeError() {
@@ -82,17 +81,16 @@ final class HomeViewModelTests: XCTestCase {
         let mockDelegate = MockHomeViewModelDelegate()
         let viewModel = HomeViewModel(service: service, audioPlayer: AudioPlayer())
         viewModel.delegate = mockDelegate
-        let errorMessage = "Failed to parse JSON"
         
         // Act
         viewModel.fetchMediaItems(with: "test")
     
         // Assert
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.async {
             XCTAssertEqual(viewModel.numberOfItems(), 0)
             XCTAssertTrue(mockDelegate.didReceiveErrorCalled, "Delegate's didReceiveError should be called")
             XCTAssertEqual(mockDelegate.receivedErrorMessage, APIError.invalidStatusCode(statusCode: 404).customDescription, "Delegate should receive correct error message")
-        })
+        }
     }
     
     func testSelectItems() {
@@ -103,7 +101,7 @@ final class HomeViewModelTests: XCTestCase {
         viewModel.delegate = mockDelegate
         viewModel.fetchMediaItems(with: "test")
     
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+        DispatchQueue.main.async {
             // Act
             viewModel.selectItem(at: 0)
             
@@ -121,7 +119,7 @@ final class HomeViewModelTests: XCTestCase {
             XCTAssertEqual(viewModel.playListCellViewModels[1].isPlaying, true, "Second item should be playing")
             XCTAssertEqual(mockDelegate.lastPlayStatusText, "正在播放 ▶️", "Play status text should be '正在播放 ▶️'")
             XCTAssertEqual(mockDelegate.lastIndexPath, IndexPath(item: 1, section: 0), "Index path should be (1, 0)")
-        })
+        }
     }
     
     func testFormateTime() {

@@ -62,15 +62,17 @@ class HomeViewModel: HomeViewModelProtocol {
     }
         
     func fetchMediaItems(with text: String) {
-        DispatchQueue.main.async { self.delegate?.didStartLoading() }
+        self.delegate?.didStartLoading()
         service.fetchMusicList(searchText: text) { [weak self] result in
-            guard let self else { return }
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.delegate?.didFinishLoading()
+                
                 switch result {
                 case .success(let items):
                     self.playListCellViewModels = self.map(items)
                     self.delegate?.didLoadData(self)
+                    
                 case .failure(let error):
                     self.delegate?.didFailToFetchData(self, error: error)
                 }
