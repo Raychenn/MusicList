@@ -20,6 +20,14 @@ class MockHomeViewModelDelegate: HomeViewModelDelegate {
         
     }
     
+    func didStartLoading() {
+        
+    }
+    
+    func didFinishLoading() {
+        
+    }
+    
     func didFailToFetchData(_ self: HomeViewModel, error: APIError) {
         didReceiveErrorCalled = true
         receivedErrorMessage = error.customDescription

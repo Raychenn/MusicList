@@ -23,6 +23,12 @@ class HomeViewController: UIViewController {
         return collectionView
     }()
     
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -105,6 +111,10 @@ class HomeViewController: UIViewController {
                               bottom: view.bottomAnchor,
                               right: view.trailingAnchor,
                               paddingTop: 12)
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.centerX(inView: view)
+        loadingIndicator.centerY(inView: view)
     }
     
     private func setupSearchUI() {
@@ -153,6 +163,15 @@ extension HomeViewController: UICollectionViewDelegate {
 // MARK: - HomeViewModelDelegate
 
 extension HomeViewController: HomeViewModelDelegate {
+    
+    func didStartLoading() {
+        loadingIndicator.startAnimating()
+    }
+    
+    func didFinishLoading() {
+        loadingIndicator.stopAnimating()
+    }
+    
     func didLoadData(_ self: HomeViewModel) {
         collectionView.reloadData()
     }

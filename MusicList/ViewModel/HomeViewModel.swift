@@ -11,6 +11,8 @@ protocol HomeViewModelDelegate: AnyObject {
     func didLoadData(_ self: HomeViewModel)
     func didUpdateUI(_ self: HomeViewModel, playStatusText: String?, indexPath: IndexPath)
     func didFailToFetchData(_ self: HomeViewModel, error: APIError)
+    func didStartLoading()
+    func didFinishLoading()
 }
 
 protocol HomeViewModelProtocol {
@@ -60,11 +62,11 @@ class HomeViewModel: HomeViewModelProtocol {
     }
         
     func fetchMediaItems(with text: String) {
+        DispatchQueue.main.async { self.delegate?.didStartLoading() }
         service.fetchMusicList(searchText: text) { [weak self] result in
-            guard let self else {
-                return
-            }
+            guard let self else { return }
             DispatchQueue.main.async {
+                self.delegate?.didFinishLoading()
                 switch result {
                 case .success(let items):
                     self.playListCellViewModels = self.map(items)
