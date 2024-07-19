@@ -96,12 +96,12 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        swtupUI()
+        setupUI()
     }
     
     // MARK: - Helpers
     
-    private func swtupUI() {
+    private func setupUI() {
         setupSearchUI()
         view.backgroundColor = .white
         collectionView.backgroundColor = .white
@@ -163,20 +163,11 @@ extension HomeViewController: UICollectionViewDelegate {
 // MARK: - HomeViewModelDelegate
 
 extension HomeViewController: HomeViewModelDelegate {
-    
-    func didStartLoading() {
-        loadingIndicator.startAnimating()
-    }
-    
-    func didFinishLoading() {
-        loadingIndicator.stopAnimating()
-    }
-    
-    func didLoadData(_ self: HomeViewModel) {
+    func homeViewModelDidLoadData(_ self: HomeViewModel) {
         collectionView.reloadData()
     }
     
-    func didUpdateUI(_ self: HomeViewModel, playStatusText: String?, indexPath: IndexPath) {
+    func homeViewModel(_ self: HomeViewModel, didUpdateUIWithPlayStatusText playStatusText: String?, indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? PlayListCell else {
             return
         }
@@ -184,8 +175,20 @@ extension HomeViewController: HomeViewModelDelegate {
         cell.updatePlayStatus(with: playStatusText)
     }
     
-    func didFailToFetchData(_ self: HomeViewModel, error: APIError) {
-        print("api error: \(error)")
+    func homeViewModel(_ self: HomeViewModel, didFailToFetchDataWithError error: APIError) {
+        print("handle api error: \(error)")
+    }
+    
+    func homeViewModel(_ self: HomeViewModel, didFailToLoadPlayerWithError error: any Error) {
+        print("handle player error: \(error)")
+    }
+    
+    func homeViewModelDidStartLoading(_ self: HomeViewModel) {
+        loadingIndicator.startAnimating()
+    }
+    
+    func homeViewModelDidFinishLoading(_ self: HomeViewModel) {
+        loadingIndicator.stopAnimating()
     }
 }
 

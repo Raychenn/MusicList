@@ -7,12 +7,13 @@
 
 import Foundation
 
-protocol HomeViewModelDelegate: AnyObject {
-    func didLoadData(_ self: HomeViewModel)
-    func didUpdateUI(_ self: HomeViewModel, playStatusText: String?, indexPath: IndexPath)
-    func didFailToFetchData(_ self: HomeViewModel, error: APIError)
-    func didStartLoading()
-    func didFinishLoading()
+protocol HomeViewModelDelegate: AnyObject {    
+    func homeViewModelDidLoadData(_ self: HomeViewModel)
+    func homeViewModel(_ self: HomeViewModel, didUpdateUIWithPlayStatusText playStatusText: String?, indexPath: IndexPath)
+    func homeViewModel(_ self: HomeViewModel, didFailToFetchDataWithError error: APIError)
+    func homeViewModel(_ self: HomeViewModel, didFailToLoadPlayerWithError error: Error)
+    func homeViewModelDidStartLoading(_ self: HomeViewModel)
+    func homeViewModelDidFinishLoading(_ self: HomeViewModel)
 }
 
 protocol HomeViewModelProtocol {
@@ -21,7 +22,7 @@ protocol HomeViewModelProtocol {
     func cellForItemAt(_ indexPath: IndexPath) -> PlayListCellViewModel
     func selectItem(at index: Int)
     
-    func play(url: URL)
+    func play(url: URL) throws
     func pause()
     func resetPlayer(completion: () -> Void)
     
@@ -62,19 +63,19 @@ class HomeViewModel: HomeViewModelProtocol {
     }
         
     func fetchMediaItems(with text: String) {
-        self.delegate?.didStartLoading()
+        DispatchQueue.main.async { self.delegate?.homeViewModelDidStartLoading(self) }
         service.fetchMusicList(searchText: text) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.delegate?.didFinishLoading()
+                self.delegate?.homeViewModelDidFinishLoading(self)
                 
                 switch result {
                 case .success(let items):
-                    self.playListCellViewModels = self.map(items)
-                    self.delegate?.didLoadData(self)
+                    self.playListCellViewModels = items.toPlayListCellViewModels()
+                    self.delegate?.homeViewModelDidLoadData(self)
                     
                 case .failure(let error):
-                    self.delegate?.didFailToFetchData(self, error: error)
+                    self.delegate?.homeViewModel(self, didFailToFetchDataWithError: error)
                 }
             }
         }
@@ -85,7 +86,7 @@ class HomeViewModel: HomeViewModelProtocol {
             return PlayListCellViewModel(artworkURLString: item.artWorkURL,
                                          trackName: item.trackName,
                                          description: item.longDescription,
-                                         trackTime: formatTime(seconds: item.trackTime ?? 0),
+                                         trackTime: (item.trackTime ?? 0).formatTime(),
                                          previewURLString: item.previewURL,
                                          playStatusText: "",
                                          isPlaying: false)
@@ -98,26 +99,30 @@ class HomeViewModel: HomeViewModelProtocol {
         if let previousIndex = selectedIndex, previousIndex != index {
             playListCellViewModels[previousIndex].isPlaying = false
             playListCellViewModels[previousIndex].playStatusText = nil
-            delegate?.didUpdateUI(self, playStatusText: nil, indexPath: IndexPath(item: previousIndex, section: 0))
+            delegate?.homeViewModel(self, didUpdateUIWithPlayStatusText: nil, indexPath: IndexPath(item: previousIndex, section: 0))
         }
         
         selectedIndex = index
         playListCellViewModels[index].isPlaying.toggle()
         let isPlaying = playListCellViewModels[index].isPlaying
         playListCellViewModels[index].playStatusText = isPlaying ? "正在播放 ▶️" : "正在播放 ⏸️"
-        delegate?.didUpdateUI(self, playStatusText: playListCellViewModels[index].playStatusText, indexPath: IndexPath(item: index, section: 0))
+        delegate?.homeViewModel(self, didUpdateUIWithPlayStatusText: playListCellViewModels[index].playStatusText, indexPath: IndexPath(item: index, section: 0))
         
         guard let targetAudioURLString = playListCellViewModels[index].previewURLString,
            let audioURL = URL(string: targetAudioURLString) else {
             return
         }
         
-        if isPlaying {
-            resetPlayer { 
-                play(url: audioURL)
+        resetPlayer {
+            do {
+                if isPlaying {
+                    try play(url: audioURL)
+                } else {
+                    pause()
+                }
+            } catch {
+                delegate?.homeViewModel(self, didFailToLoadPlayerWithError: error)
             }
-        } else {
-            pause()
         }
     }
     
@@ -133,8 +138,8 @@ class HomeViewModel: HomeViewModelProtocol {
 // MARK: - Player
 
 extension HomeViewModel {
-    func play(url: URL) {
-        player.load(url: url)
+    func play(url: URL) throws {
+        try player.load(url: url)
         player.play()
     }
     

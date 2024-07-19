@@ -11,19 +11,19 @@ protocol AudioPlayerProtocol {
     func play()
     func pause()
     func reset()
-    func load(url: URL)
+    func load(url: URL) throws
 }
 
 class AudioPlayer: AudioPlayerProtocol {
     private var audioPlayer: AVPlayer?
     private var audioURL: URL?
     
-    func load(url: URL) {
+    func load(url: URL) throws {
         self.audioURL = url
-        prepareAudioPlayer()
+        try prepareAudioPlayer()
     }
 
-    private func prepareAudioPlayer() {
+    private func prepareAudioPlayer() throws {
         guard let url = audioURL else { return }
         
         do {
@@ -33,7 +33,7 @@ class AudioPlayer: AudioPlayerProtocol {
             try AVAudioSession.sharedInstance().setCategory(.playback)
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
-            print("error loaded player: \(error)")
+            throw error
         }
     }
 

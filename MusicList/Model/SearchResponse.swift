@@ -26,3 +26,17 @@ struct MediaItem: Codable {
         case previewURL = "previewUrl"
     }
 }
+
+extension Array where Element == MediaItem {
+    func toPlayListCellViewModels() -> [PlayListCellViewModel] {
+        return self.compactMap { item in
+            PlayListCellViewModel(artworkURLString: item.artWorkURL,
+                                  trackName: item.trackName,
+                                  description: item.longDescription,
+                                  trackTime: (item.trackTime ?? 0).formatTime(),
+                                  previewURLString: item.previewURL,
+                                  playStatusText: "",
+                                  isPlaying: false)
+        }
+    }
+}
