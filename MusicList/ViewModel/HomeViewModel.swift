@@ -35,7 +35,12 @@ class HomeViewModel: HomeViewModelProtocol {
     
     weak var delegate: HomeViewModelDelegate?
     
-    private var mediaItems: [MediaItem]?
+    private var mediaItems: [MediaItem]? {
+        didSet {
+            guard let mediaItems else { return }
+            self.playListCellViewModels = mediaItems.toPlayListCellViewModels()
+        }
+    }
     
     private(set) var selectedIndex: Int?
     
@@ -47,9 +52,13 @@ class HomeViewModel: HomeViewModelProtocol {
     
     // MARK: - Life cycle
     
-    init(service: NetworkServiceProtocol, audioPlayer: AudioPlayerProtocol) {
+    init(service: NetworkServiceProtocol, audioPlayer: AudioPlayerProtocol, mediaItems: [MediaItem] = []) {
         self.service = service
         self.player = audioPlayer
+        
+        defer {
+            self.mediaItems = mediaItems
+        }
     }
     
     // MARK: - data source
@@ -73,7 +82,7 @@ class HomeViewModel: HomeViewModelProtocol {
                 
                 switch result {
                 case .success(let items):
-                    self.playListCellViewModels = items.toPlayListCellViewModels()
+                    self.mediaItems = items
                     self.delegate?.homeViewModelDidLoadData(self)
                     
                 case .failure(let error):

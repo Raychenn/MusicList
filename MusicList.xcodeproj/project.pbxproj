@@ -15,10 +15,11 @@
 		ED06DF9D2C46A47000DB82AC /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF9C2C46A47000DB82AC /* AudioPlayer.swift */; };
 		ED06DF9F2C47F8C400DB82AC /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF9E2C47F8C400DB82AC /* TestData.swift */; };
 		ED06DFA12C48002300DB82AC /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFA02C48002300DB82AC /* HomeViewModelTests.swift */; };
-		ED06DFA32C48017600DB82AC /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFA22C48017600DB82AC /* MockNetworkService.swift */; };
 		ED06DFA62C4804B600DB82AC /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DF9E2C47F8C400DB82AC /* TestData.swift */; };
-		ED06DFA82C480ACD00DB82AC /* MockHomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFA72C480ACD00DB82AC /* MockHomeViewModelDelegate.swift */; };
 		ED06DFAC2C4A120100DB82AC /* Int+Entensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFAB2C4A120100DB82AC /* Int+Entensions.swift */; };
+		ED06DFAD2C4A247C00DB82AC /* MockHomeViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFA72C480ACD00DB82AC /* MockHomeViewModelDelegate.swift */; };
+		ED06DFB22C4A25A400DB82AC /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFA22C48017600DB82AC /* MockNetworkService.swift */; };
+		ED06DFB42C4A2F8B00DB82AC /* IntEntensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED06DFB32C4A2F8B00DB82AC /* IntEntensionTests.swift */; };
 		EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */; };
 		EDB820A82C44030F00EE2A3C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A72C44030F00EE2A3C /* NetworkService.swift */; };
 		EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB820A92C44072E00EE2A3C /* SearchResponse.swift */; };
@@ -66,6 +67,7 @@
 		ED06DFA22C48017600DB82AC /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		ED06DFA72C480ACD00DB82AC /* MockHomeViewModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHomeViewModelDelegate.swift; sourceTree = "<group>"; };
 		ED06DFAB2C4A120100DB82AC /* Int+Entensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Entensions.swift"; sourceTree = "<group>"; };
+		ED06DFB32C4A2F8B00DB82AC /* IntEntensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntEntensionTests.swift; sourceTree = "<group>"; };
 		EDB820A52C4402B000EE2A3C /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
 		EDB820A72C44030F00EE2A3C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		EDB820A92C44072E00EE2A3C /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
@@ -138,7 +140,7 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
-		ED06DFAA2C4815DB00DB82AC /* MockObjects */ = {
+		ED06DFB12C4A254F00DB82AC /* MockObjects */ = {
 			isa = PBXGroup;
 			children = (
 				ED06DFA22C48017600DB82AC /* MockNetworkService.swift */,
@@ -171,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				EDFFC5A02C436F760012C8A4 /* Info.plist */,
-				ED06DFAA2C4815DB00DB82AC /* MockObjects */,
 				ED06DF9B2C46A46300DB82AC /* Player */,
 				ED06DF912C45489A00DB82AC /* Shared */,
 				EDFFC5CA2C4373000012C8A4 /* ViewController */,
@@ -188,9 +189,11 @@
 		EDFFC5A82C436F760012C8A4 /* MusicListTests */ = {
 			isa = PBXGroup;
 			children = (
+				ED06DFB12C4A254F00DB82AC /* MockObjects */,
 				EDFFC5A92C436F760012C8A4 /* MusicListTests.swift */,
 				ED06DF9E2C47F8C400DB82AC /* TestData.swift */,
 				ED06DFA02C48002300DB82AC /* HomeViewModelTests.swift */,
+				ED06DFB32C4A2F8B00DB82AC /* IntEntensionTests.swift */,
 			);
 			path = MusicListTests;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				EDFFC5CE2C43735D0012C8A4 /* UIView+Extensions.swift in Sources */,
 				EDB820AA2C44072E00EE2A3C /* SearchResponse.swift in Sources */,
 				EDFFC5942C436F6C0012C8A4 /* HomeViewController.swift in Sources */,
+				ED06DFB22C4A25A400DB82AC /* MockNetworkService.swift in Sources */,
 				EDFFC5902C436F6C0012C8A4 /* AppDelegate.swift in Sources */,
 				EDFFC5922C436F6C0012C8A4 /* SceneDelegate.swift in Sources */,
 				ED06DF902C453F4200DB82AC /* HomeViewModel.swift in Sources */,
@@ -413,10 +417,8 @@
 				ED06DF9D2C46A47000DB82AC /* AudioPlayer.swift in Sources */,
 				EDB820A62C4402B000EE2A3C /* UITextField+Extensions.swift in Sources */,
 				EDFFC59A2C436F6C0012C8A4 /* MusicList.xcdatamodeld in Sources */,
-				ED06DFA32C48017600DB82AC /* MockNetworkService.swift in Sources */,
 				ED06DFA62C4804B600DB82AC /* TestData.swift in Sources */,
 				ED06DF982C454D3A00DB82AC /* PlayListCellViewModel.swift in Sources */,
-				ED06DFA82C480ACD00DB82AC /* MockHomeViewModelDelegate.swift in Sources */,
 				ED06DF942C4548B800DB82AC /* HTTPDataDownloader.swift in Sources */,
 				EDFFC5C42C4370D10012C8A4 /* PlayListCell.swift in Sources */,
 				ED06DF962C4548DA00DB82AC /* APIError.swift in Sources */,
@@ -428,7 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED06DFAD2C4A247C00DB82AC /* MockHomeViewModelDelegate.swift in Sources */,
 				EDFFC5AA2C436F760012C8A4 /* MusicListTests.swift in Sources */,
+				ED06DFB42C4A2F8B00DB82AC /* IntEntensionTests.swift in Sources */,
 				ED06DF9F2C47F8C400DB82AC /* TestData.swift in Sources */,
 				ED06DFA12C48002300DB82AC /* HomeViewModelTests.swift in Sources */,
 			);

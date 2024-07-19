@@ -114,11 +114,11 @@ let testMusicListData: Data = """
 }
 """.data(using: .utf8)!
 
-// invalid name key in previewUrl
+// invalid name key
 let invalidMusicListData: Data = """
 {
    "resultCount":3,
-   "results":[
+   "data":[
       {
          "wrapperType":"track",
          "kind":"feature-movie",
@@ -127,7 +127,7 @@ let invalidMusicListData: Data = """
          "trackName":"Veronica Mars",
          "trackCensoredName":"Veronica Mars",
          "trackViewUrl":"https://itunes.apple.com/us/movie/veronica-mars/id814627621?uo=4",
-         "dsfmdsofmdsifdsoifodsifdsf":"https://video-ssl.itunes.apple.com/itunes-assets/Video122/v4/27/d6/20/27d620e4-27b1-0443-c72c-0cd342bed847/mzvf_8876881295009852242.640x354.h264lc.U.p.m4v",
+         "previewUrl":"https://video-ssl.itunes.apple.com/itunes-assets/Video122/v4/27/d6/20/27d620e4-27b1-0443-c72c-0cd342bed847/mzvf_8876881295009852242.640x354.h264lc.U.p.m4v",
          "artworkUrl30":"https://is1-ssl.mzstatic.com/image/thumb/Video/v4/f6/cc/07/f6cc0714-f0c0-affe-32e4-8ee75244d217/pr_source.lsr/30x30bb.jpg",
          "artworkUrl60":"https://is1-ssl.mzstatic.com/image/thumb/Video/v4/f6/cc/07/f6cc0714-f0c0-affe-32e4-8ee75244d217/pr_source.lsr/60x60bb.jpg",
          "artworkUrl100":"https://is1-ssl.mzstatic.com/image/thumb/Video/v4/f6/cc/07/f6cc0714-f0c0-affe-32e4-8ee75244d217/pr_source.lsr/100x100bb.jpg",
