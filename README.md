@@ -43,6 +43,7 @@ This project benefited from the use of AI tools like ChatGPT for various tasks:
 - **Idea Generation**: Provided useful suggestions for structuring and enhancing the project.
 - **Debugging UI Problems**: Helped troubleshoot and resolve UI issues.
 - **README Production**: Generated an initial README template that was further customized.
+- **Better Naming**: Generated better naming convention that will be more readable.
 
 ## Dependencies
 - **No third-party libraries used**. The project relies solely on the native iOS frameworks.
