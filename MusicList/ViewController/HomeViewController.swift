@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
     
     private let networkDebouncer = Debouncer(delay: 0.5)
     
-    private lazy var searchAction = UIAction { [weak self]_ in
+    private lazy var searchAction = UIAction { [weak self] _ in
         guard let self,
               let searchText = self.searchTextField.text,
               !searchText.isEmpty else {
@@ -47,11 +47,9 @@ class HomeViewController: UIViewController {
         }
         
         networkDebouncer.schedule { [weak self] in
-            DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                guard let self else { return }
-                self.viewModel.resetPlayer {
-                    self.viewModel.fetchMediaItems(with: searchText)
-                }
+            guard let self else { return }
+            self.viewModel.resetPlayer {
+                self.viewModel.fetchMediaItems(with: searchText)
             }
         }
     }

@@ -52,7 +52,7 @@ class HomeViewModel: HomeViewModelProtocol {
         self.player = audioPlayer
     }
     
-    // MARK: - Helpers
+    // MARK: - data source
     
     func numberOfItems() -> Int {
         playListCellViewModels.count
@@ -62,6 +62,8 @@ class HomeViewModel: HomeViewModelProtocol {
         playListCellViewModels[indexPath.row]
     }
         
+    // MARK: - Helpers
+    
     func fetchMediaItems(with text: String) {
         DispatchQueue.main.async { self.delegate?.homeViewModelDidStartLoading(self) }
         service.fetchMusicList(searchText: text) { [weak self] result in
@@ -78,18 +80,6 @@ class HomeViewModel: HomeViewModelProtocol {
                     self.delegate?.homeViewModel(self, didFailToFetchDataWithError: error)
                 }
             }
-        }
-    }
-    
-    func map(_ mediaItems: [MediaItem]) -> [PlayListCellViewModel] {
-        return mediaItems.compactMap { item in
-            return PlayListCellViewModel(artworkURLString: item.artWorkURL,
-                                         trackName: item.trackName,
-                                         description: item.longDescription,
-                                         trackTime: (item.trackTime ?? 0).formatTime(),
-                                         previewURLString: item.previewURL,
-                                         playStatusText: "",
-                                         isPlaying: false)
         }
     }
     
@@ -113,7 +103,9 @@ class HomeViewModel: HomeViewModelProtocol {
             return
         }
         
-        resetPlayer {
+        resetPlayer { [weak self] in
+            guard let self else { return }
+            
             do {
                 if isPlaying {
                     try play(url: audioURL)
@@ -124,14 +116,6 @@ class HomeViewModel: HomeViewModelProtocol {
                 delegate?.homeViewModel(self, didFailToLoadPlayerWithError: error)
             }
         }
-    }
-    
-    func formatTime(seconds: Int) -> String {
-        let totalSeconds = seconds / 1000
-        let minutes = totalSeconds / 60
-        let seconds = totalSeconds % 60
-        
-        return String(format: "%d:%02d", minutes, seconds)
     }
 }
 
