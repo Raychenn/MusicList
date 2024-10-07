@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PlayListCellViewModel {
+struct PlayListCellViewModel {
     let artworkURLString: String?
     let trackName: String?
     let description: String?

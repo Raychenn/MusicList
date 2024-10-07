@@ -11,6 +11,8 @@ class PlayListCell: UICollectionViewCell {
     
     // MARK: - Initial
     
+    var artworkImageViewBottomConstraint: NSLayoutConstraint?
+    
     private let artworkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -35,6 +37,7 @@ class PlayListCell: UICollectionViewCell {
         label.textColor = .darkGray
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.text = "4:15"
+        label.setContentCompressionResistancePriority(.required, for: .horizontal)
         return label
     }()
     
@@ -108,19 +111,24 @@ class PlayListCell: UICollectionViewCell {
                       paddingRight: 20)
         
         contentView.addSubview(artworkImageView)
+        artworkImageView.translatesAutoresizingMaskIntoConstraints = false
         artworkImageView.setDimensions(height: 100, width: 100)
         artworkImageView.anchor(top: contentView.topAnchor,
                                 left: contentView.leadingAnchor,
-                                bottom: contentView.bottomAnchor,
                                 paddingTop: 72,
-                                paddingLeft: 10, paddingBottom: 72)
+                                paddingLeft: 10)
+        
+        artworkImageViewBottomConstraint = artworkImageView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -72)
+        artworkImageViewBottomConstraint?.isActive = true
     
         contentView.addSubview(descriptionLabel)
         descriptionLabel.anchor(top: artworkImageView.topAnchor,
                                 left: artworkImageView.trailingAnchor,
-                                bottom: contentView.bottomAnchor,
                                 right: contentView.trailingAnchor,
-                                paddingLeft: 18, paddingBottom: 22)
+                                paddingLeft: 18)
+        let descriptionLabelBottomConstraint = descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -22)
+        descriptionLabelBottomConstraint.priority = .required
+        descriptionLabelBottomConstraint.isActive = true
     }
     
     func configure(with viewModel: PlayListCellViewModel) {
@@ -131,7 +139,11 @@ class PlayListCell: UICollectionViewCell {
         
         trackTimeLabel.text = viewModel.trackTime
         
-        descriptionLabel.text = viewModel.description
+        if let description = viewModel.description {
+            descriptionLabel.text = viewModel.description
+        } else {
+            artworkImageViewBottomConstraint?.isActive = false
+        }
         
         playStatusLabel.text = viewModel.playStatusText
     }

@@ -98,14 +98,18 @@ class HomeViewModel: HomeViewModelProtocol {
         if let previousIndex = selectedIndex, previousIndex != index {
             playListCellViewModels[previousIndex].isPlaying = false
             playListCellViewModels[previousIndex].playStatusText = nil
-            delegate?.homeViewModel(self, didUpdateUIWithPlayStatusText: nil, indexPath: IndexPath(item: previousIndex, section: 0))
+            delegate?.homeViewModel(self,
+                                    didUpdateUIWithPlayStatusText: nil,
+                                    indexPath: IndexPath(item: previousIndex, section: 0))
         }
         
         selectedIndex = index
         playListCellViewModels[index].isPlaying.toggle()
         let isPlaying = playListCellViewModels[index].isPlaying
         playListCellViewModels[index].playStatusText = isPlaying ? "正在播放 ▶️" : "正在播放 ⏸️"
-        delegate?.homeViewModel(self, didUpdateUIWithPlayStatusText: playListCellViewModels[index].playStatusText, indexPath: IndexPath(item: index, section: 0))
+        delegate?.homeViewModel(self,
+                                didUpdateUIWithPlayStatusText: playListCellViewModels[index].playStatusText,
+                                indexPath: IndexPath(item: index, section: 0))
         
         guard let targetAudioURLString = playListCellViewModels[index].previewURLString,
            let audioURL = URL(string: targetAudioURLString) else {
